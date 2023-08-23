@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Extension Popup</title>
+  <script
+  src="https://code.jquery.com/jquery-3.7.0.min.js"
+  integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
+  crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="js-pagination-holder pagination-holder">
+    <div class="pagination">
+      <div class="js-jump-to-page jump-to-page current" data-index="0">1</div>
+      <div class="js-jump-to-page jump-to-page" data-index="1">2</div>
+      <div class="js-jump-to-page jump-to-page" data-index="12">13</div>
+      <div class="js-jump-to-page jump-to-page" data-index="13">14</div>
+      <div class="js-jump-to-page jump-to-page" data-index="1"><i class="hb hb-chevron-right"></i></div>
+    </div>
+  </div>
+  <script>
+    // Wait for the document to be ready
+    $(document).ready(function() {
+      // Find all elements with the class js-jump-to-page
+      const jumpToPages = $('.js-jump-to-page');
+
+      // Initialize a variable to keep track of the largest data-index
+      let largestIndex = -1;
+
+      // Iterate over each element and extract the data-index attribute
+      jumpToPages.each(function() {
+        const dataIndex = $(this).data('index');
+        
+        // Check if the data-index is a number and larger than the current largestIndex
+        if (!isNaN(dataIndex) && dataIndex > largestIndex) {
+          largestIndex = dataIndex;
+        }
+      });
+
+      // Display the largest data-index
+      console.log('Largest data-index:', largestIndex);
+    });
+  </script>
+</body>
+</html>
